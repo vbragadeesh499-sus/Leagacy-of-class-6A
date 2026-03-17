@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Legacy of 6A</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://images.unsplash.com/photo-1510312160913-91ac6563eb6a?q=80&w=2670&auto=format&fit=crop'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+            overflow-y: auto; 
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
+
+        #start-screen {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            background: #e67e22;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #d35400;
+            transform: translateY(-3px);
+        }
+
+        /* Floating Pause/Resume Button */
+        #controlBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            z-index: 100;
+        }
+
+        #legacy-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 0;
+            opacity: 0;
+            transition: opacity 1s ease-out;
+            z-index: 1;
+        }
+
+        #legacy-container.show { opacity: 1; }
+
+        .paper {
+            background: #fff9e6;
+            width: 85%;
+            max-width: 800px;
+            min-height: 80vh;
+            padding: 50px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.8);
+            border-radius: 8px;
+            border-left: 10px solid #d4c4a8;
+        }
+
+        #typing-area {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            line-height: 1.8;
+            color: #2c3e50;
+            white-space: pre-wrap;
+            text-align: left;
+        }
+
+        #download-section {
+            margin-top: 30px;
+            display: none;
+        }
+
+        .hidden { display: none !important; }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            #typing-area { font-size: 1.4rem; }
+            .paper { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="start-screen">
+        <h1>The Legacy of our class 6A</h1>
+        <button class="btn" onclick="showLegacy()">Click to view</button>
+    </div>
+
+    <button id="controlBtn" class="btn" style="background: #2c3e50; border: 1px solid white;" onclick="togglePause()">Pause</button>
+
+    <div id="legacy-container" class="hidden">
+        <div class="paper" id="pdf-content">
+            <div id="typing-area"></div>
+        </div>
+        
+        <div id="download-section">
+            <button class="btn" style="background: #27ae60;" onclick="downloadPDF()">Download Legacy as PDF</button>
+            <p style="color: white; margin-top: 10px;">Memory saved! You can now scroll up to re-read.</p>
+        </div>
+    </div>
+
+    <script>
+        const myLegacyText = `28 February 2026
+7:45
+My Hall, Porur, Chennai 
+6-A
+
+THE LEGACY OF ME
+
+I felt very excited and proud to promoted from 5th B. I expected that I will have more new friends. Yes, l was nervous, excited, scared and confident. When I first stepped into 6th A. I never Knew that this year would change me. There is a strict but Kind teacher called Shanthi Amudan mam (Tamil mam). I was too too exited while revealing marks. If I get more marks better than before exam, It will give a seperate good and Happy feel. There is a Kind teacher - Preethi mam - Social teacher. Ezhilarasi Mam - Maths mam helped when I was struggling. 
+
+My class has many funny movements. I made a new friends with Arjun who made a big disaster. In my 6th year I had my whole class as a best friend. Many small fight happend With boys and girls which will solve after a while which is the nature of friendship. In Lunch time I shared my lunch and they will share their lunch. I made many bench mates, there is memorial bench mate Anithra. We didn't made any group study. But, We got punishments and scold with my mates. I like all periods but in that legacy, sience, Maths, PT, Social, WE (Work Experience) there is a hardest subject for my most of my mates which is called Tamil. 
+
+I doesn't participate in any competitions. I had many and many exam fears. For the Past two year I Partcipitate danced in Aunnal days with a traditonal Kerchief dance. For the past four year I selected to sports days but selected In that year. But I left with fear of my parents will scold for fees. One of the best and worst pongal and Independence Day celebration happend. I Partcipitated in two mimes 1st Earth Day next science day. We went to Brilla Planetorium and explored many things. In project day I was in maths project in which I wasted 1st time. In culturals I joined with my one of the Best mate Bragadeesh for PPT presentation. 
+
+Many time I felt sad and stressed on my work in my 6th school year. I doesn't have any misunderstanding. I doesn't have any failure. I learned to control feelings to my mates I become more confident. I became little more responsible. I knew to overconce fear. I improved my English speaking. I became a better leader, friend, Joker, achiever, simpler and fit and busy. Thank you for my friends to improve and to share my dreams. Thank you for my teachers to shape me. I promise myself to improve me. 
+
+Yes, Good bye to 6th A. "6th A it is not just a class - It was a chapter that shared my heart, mind and dreams.
+
+We came as strangers,
+Not knowing what we are going to do.
+Slowly, laughter built bridges
+Where silence once remained.
+We shared secrets, fears, and dreams,
+Under the same classroom sky.
+We didn’t notice time was flying…
+Until it was time to say goodbye.
+
+6th A didn’t truly end —
+It became a heartbeat in me.
+Not just a class I once attended,
+But a part of who I’ll always be. 💔✨`;
+
+        let isPaused = false;
+        let wordList = [];
+        let currentIndex = 0;
+
+        function showLegacy() {
+            document.getElementById('start-screen').style.display = 'none';
+            document.getElementById('controlBtn').style.display = 'block';
+            const container = document.getElementById('legacy-container');
+            container.classList.remove('hidden');
+            
+            setTimeout(() => {
+                container.classList.add('show');
+                wordList = myLegacyText.split(/(\s+)/); 
+                typeWords();
+            }, 100);
+        }
+
+        function typeWords() {
+            if (currentIndex < wordList.length && !isPaused) {
+                document.getElementById("typing-area").innerHTML += wordList[currentIndex];
+                let delay = 333; // 3 words per second
+                if (wordList[currentIndex].trim() === "") delay = 0;
+                currentIndex++;
+                window.scrollTo(0, document.body.scrollHeight);
+                setTimeout(typeWords, delay);
+            } else if (currentIndex >= wordList.length) {
+                document.getElementById('controlBtn').style.display = 'none';
+                document.getElementById('download-section').style.display = 'block';
+            }
+        }
+
+        function togglePause() {
+            isPaused = !isPaused;
+            const btn = document.getElementById('controlBtn');
+            btn.innerText = isPaused ? "Resume" : "Pause";
+            if (!isPaused) typeWords();
+        }
+
+        function downloadPDF() {
+            const element = document.getElementById('pdf-content');
+            const opt = {
+                margin:       0.5,
+                filename:     'Legacy_of_6A.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2 },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            html2pdf().set(opt).from(element).save();
+        }
+    </script>
+</body>
+</html>
